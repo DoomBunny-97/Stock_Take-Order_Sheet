@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Stock List</title>
+</head>
+<body>
+  <div class="container" id="title">
+    <h1>Stock List</h1>
+    <p id="date-today">[Date]</p>
+  </div>
+
+  <p class=" container instruction"><em>Model = Crates/Packs | Stock = Items | Order = Crates/Packs</em> 
+  </p>
+
+  <!-- left side next to "Add button" -->
+  <label for="item picker"></label> 
+  <div class="container list">
+    <select name="item picker" id="item-picker">
+      <option value="default-item">
+        Pick an item</option>
+      <option value="300-coke">
+        300ml Coke</option>
+      <option value="300-coke-z">
+        300ml Coke Z</option>
+      <option value="300-stoney">
+        300ml Stoney</option>
+      <option value="300-fanta">
+        300ml Fanta</option>
+      <option value="300-sprite">
+        300ml Sprite</option>
+      <!-- ...and more -->
+    </select>
+
+    <button class="addItem">Add</button>
+  </div>
+
+  
+
+  <!-- container to add with js per item picked -->
+  <div class="container item1">
+    <p id="item-name">[Item Picked]</p> 
+    <input type="number" name="model stock" placeholder="Model" id="model-stock1">
+    <input type="number" name="stock level" placeholder="Stock" id="stock-level1">
+    <input type="number" name="order" placeholder="Order" id="order1"> 
+    <!-- maybe make "order" auto filled with previous values? but still able to be edited?...(
+      ans = (modelStock - stockLevel) / order pack or crate size
+      if ((ans) < 1 )
+        return 0 else return ans rounded
+      ) -->
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
