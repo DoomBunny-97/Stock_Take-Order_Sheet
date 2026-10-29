@@ -6,8 +6,26 @@
 
 :root{
   --pri-col : rgb(155, 218, 255);
+  --field-col: rgba(0, 174, 255, 0.315);
   --pri-font-col: rgb(15, 81, 119);
 }
+
+@supports (appearance: base-select){
+  select, ::picker(select){
+    appearance: base-select;
+  }
+
+  ::picker(select){
+    border: 0;
+    background: rgb(105, 207, 255);
+    border-radius: clamp(
+    2px, 2vw, 8px);
+  }
+}
+/* #app-container{
+  min-width: 200px;
+} */
+ 
 .container{
   display: flex;
   justify-content: center;
@@ -16,13 +34,12 @@
   gap: 4px;
   background: var(--pri-col);
   color: var(--pri-font-col);
-  
   p{
-    min-width: 200px;
+    min-width: 260px;
   }
   input{
     border: 0;
-    background: rgba(0, 174, 255, 0.315);
+    background: var(--field-col);
     border-radius: clamp(2px, 2vw, 6px);
     text-align: center;
     flex: 1 1 50px;
@@ -30,16 +47,48 @@
     height:20px;
   }
 }
+
+.bordR-5px{
+  border-radius: clamp(
+    5px, 2vw, 6px);
+  border: 0;
+}
+.bordR-2px{
+  border-radius: clamp(
+    2px, 2vw, 6px);
+  border: 0;
+}
+.fw6{
+  font-weight: 600;
+}
+
 .instruction{
   text-align: center;
 }
+
 .list{
+  height:30px;
   select{
-    flex: 1 1 50px;
+    option{
+      color: var(--pri-font-col);
+    }
   }
+  
   button{
+    height:100%;
     min-width: 100px;
+    background:var(--pri-font-col);
+    color: var(--pri-col);
   }
+}
+
+#item-picker{
+  height:100%;
+  flex: 1 1 50px;
+  background:var(--field-col);
+  color: var(--pri-font-col);
+  padding: 6px;
+  padding-left: 20px;
 }
 
 #title{
@@ -49,6 +98,6 @@
     min-width: 180px;
   }
   p{
-    min-width: 0;
+    min-width: 200px;
   }
 }
