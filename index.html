@@ -13,14 +13,14 @@
       <p id="date-today">[Date]</p>
     </div>
 
-    <p class=" container instruction">
+    <p class="container instruction">
       <em>Model = Crates/Packs | Stock = Items | Order = Crates/Packs</em>
     </p>
 
     <!-- item picker + button -->
     <label for="item-picker"></label> 
     <div class="container list">
-      <select name="item_picker" class="bordR-5px" id="item-picker">
+      <select name="item_picker" class="bordR-5px" id="iDropdown">
         <option value="default-item">
           Pick an item</option>
         <option value="300-coke">
@@ -36,24 +36,38 @@
         <!-- ...and more -->
       </select>
 
-      <button class="addItem bordR-5px">Add</button>
+      <button class="bordR-5px" id="add-item">Add</button>
     </div>
 
-    <!-- container to add with js per item picked -->
-    <div class="container item1">
-      <p id="item-name" class="fw6">[Item Picked]</p> 
-      <input type="number" name="model_stock" placeholder="Model" id="model-stock1">
-      <input type="number" name="stock_level" placeholder="Stock" id="stock-level1">
-      <input type="number" name="order" placeholder="Order" id="order1"> 
-      <!-- maybe make "order" auto filled with previous values? but still able to be edited?...(
-        ans = (modelStock - stockLevel) / order pack or crate size
-        if ((ans) < 1 )
-          return 0 else return ans rounded
-        ) -->
+    <div id="field-container">
+
+      
+      <!-- container to add with js per item picked -->
+      <!-- 
+      <div class="container">
+        <p id="item-name" class="fw6">[Item Picked]</p> 
+      
+        <input type="number" name="model_stock" placeholder="Model" id="model-stock1">
+        <input type="number" name="stock_level" placeholder="Stock" id="stock-level1">
+        <input type="number" name="order" placeholder="Order" id="order1"> 
+
+        <button>X</button>
+        
+      </div> 
+      -->
+
+      <!-- 
+        maybe make "order" auto filled with previous values? but still able to be edited?...(
+          ans = (modelStock - stockLevel) / order pack or crate size
+          if ((ans) < 1 )
+            return 0 else return ans rounded
+          ) 
+      -->
+
+      <!-- ======================================= -->
     </div>
-    <!-- ======================================= -->
   <!-- </div> -->
 
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
