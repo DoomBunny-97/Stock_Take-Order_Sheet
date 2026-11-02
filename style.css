@@ -92,6 +92,11 @@
   }
 }
 
+.caution{
+  color: rgb(197, 0, 0);
+  font-weight: 600;
+}
+
 #iDropdown{
   height:100%;
   flex: 1 1 50px;
