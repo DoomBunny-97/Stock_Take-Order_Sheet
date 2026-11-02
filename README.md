@@ -25,20 +25,29 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Stock: Amount of individual items currently in stock.
 - Order: Crates/Packs to order (*will be making it auto fill dependent on the Model and Stock Levels*)
 
+#### Product crate/pack sizes [items per]:
+- 300ml PET              -> 24
+- 440ml PET              -> 24
+- 500ml Glass Returnable -> 20
+- 2l PET                 -> 6
+- 2l RPET                -> 9
+- 500ml Can              -> 24
+- 500ml Hot-Fill PET     -> 24
+- Pump Bottle            -> 24
+
 ### UPDATE:
-- Made a function that adds a new input row for the item picked in the list. (*Attached to "Add" button*)
-- Added some formatting for all new rows.
-- Cried for 20 minutes.
+- Stopped item duplication on the list.
+- Added more items (not all).
 
 ### TO DO:
-- Stop it from allowing duplicate fields.
+- ~~Stop it from allowing duplicate fields.~~
 - Better formatting ?
 - Button animations *
 - Save option.
 - Load previous.
 - Make Order field auto fill while also allowing edits to it.
 - Refresh edits button to reset manual changes made to Order field.
-- Button that sets a formatted document to print with the info contained.
+- Button that makes a formatted document to print with the info contained.
 
 *The pack/crate sizes will be static, set to the sizes we usually get here when ordering.*  
 
