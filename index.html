@@ -16,22 +16,69 @@
     <p class="container instruction">
       <em>Model = Crates/Packs | Stock = Items | Order = Crates/Packs</em>
     </p>
+    <p class="container caution" id="item-warning"></p>
 
     <!-- item picker + button -->
     <div class="container list">
       <select name="item_picker" class="bordR-5px" id="iDropdown">
+        <!-- 300ml PET -->
         <option value="default-item">
           Pick an item</option>
-        <option value="300-coke">
+        <option class="ml300" value="300-coke">
           300ml Coke</option>
-        <option value="300-coke-z">
+        <option class="ml300" value="300-coke-z">
           300ml Coke Z</option>
-        <option value="300-stoney">
+        <option class="ml300" value="300-stoney">
           300ml Stoney</option>
-        <option value="300-fanta">
+        <option class="ml300" value="300-fanta">
           300ml Fanta</option>
-        <option value="300-sprite">
+        <option class="ml300" value="300-sprite">
           300ml Sprite</option>
+        <!-- 440ml PET -->
+        <option class="ml440" value="440-coke">
+          440ml Coke</option>
+        <option class="ml440" value="440-lite">
+          440ml Coke Lite</option>
+        <option class="ml440" value="440-cs">
+          440ml Cream Soda</option>
+        <option class="ml440" value="440-pn">
+          440ml Pine Nut</option>
+        <option class="ml440" value="440-stoney">
+          440ml Stoney</option>
+        <!-- 500ml Glass -->
+        <option class="ml500G" value="500G-coke">
+          500ml G Coke</option>
+        <option class="ml500G" value="500G-fo">
+          500ml G Fanta Orange</option>
+        <option class="ml500G" value="500G-fg">
+          500ml G Fanta Grape</option>
+        <option class="ml500G" value="500G-fpn">
+          500ml G Fanta Pine Nut</option>
+        <!-- 2l PET -->
+        <option class="l2" value="2-coke">
+          2L Coke</option>
+        <option class="l2" value="2-lite">
+          2L Coke Lite</option>
+        <option class="l2" value="2-fo">
+          2L Fanta Orange</option>
+        <option class="l2" value="2-fg">
+          2L Fanta Grape</option>
+        <option class="l2" value="2-cs">
+          2L SL Cream Soda</option>
+        <option class="l2" value="2-rb">
+          2L SL Raspberry</option>
+        <!-- 2l rPET -->
+        <option class="l2R" value="2R-Coke">
+          2L Coke (Retrunable)</option>
+        <!-- 500ml Can -->
+        <option class="ml500C" value="500C-monster">
+          500ml Monster Original</option>
+        <!-- 500ml Hot-Fill PET -->
+        <option class="ml500HF" value="500HF-naartjie">
+          500ml Powerade Naartjie</option>
+        <option class="ml500HF" value="500HF-mountainblast">
+          500ml Powerade Mountainblast</option>
+        <!-- Pump Bottle -->
         <!-- ...and more -->
       </select>
 
@@ -46,8 +93,8 @@
       <div class="container">
         <p id="item-name" class="fw6">[Item Picked]</p> 
 
-        <input type="number" name="model_stock" placeholder="Model" id="model-stock1">
-        <input type="number" name="stock_level" placeholder="Stock" id="stock-level1">
+        <input type="number" name="model_stock" placeholder="Model" id="model-itemDef">
+        <input type="number" name="stock_levelDef" placeholder="Stock" id="stock-item">
         <input type="number" name="order" placeholder="Order" id="order1"> 
 
         <button>X</button>
