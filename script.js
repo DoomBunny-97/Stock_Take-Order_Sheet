@@ -25,9 +25,11 @@ document.getElementById('add-item').addEventListener('click', function(){
   const container = document.getElementById('field-container');
   const wrapper = document.createElement('div');//----------- wrapper
   wrapper.classList.add('container');
+  wrapper.classList.add('wrapper');
   const iName = document.createElement('p');  //------------ add name
   iName.textContent = `${sText}`;
   iName.classList.add('usedItems');
+  iName.classList.add('fw6');
 
   // console.log(sType);
 
