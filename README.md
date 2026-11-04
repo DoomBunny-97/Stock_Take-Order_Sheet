@@ -36,9 +36,8 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Pump Bottle            -> 24
 
 ### UPDATE:
-- Fixed some colours.
-- Added field wrappers for each item. 
-- Cursor now pointer on button hover.
+- Order field auto updates and is still editable after.
+- Fixed some issues in the code that would break it.
 
 ### TO DO:
 - ~~Stop it from allowing duplicate fields.~~
@@ -46,10 +45,10 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Button animations *
 - Save option.
 - Load previous.
-- Make Order field auto fill while also allowing edits to it.
+- ~~Make Order field auto fill while also allowing edits to it.~~
 - Refresh edits button to reset manual changes made to Order field.
 - Button that makes a formatted document to print with the info contained.
-- Maybe add option to switch to other suppliers (this one is just Coke for now) ?
+- Maybe add option to switch to other suppliers (this one is just Coke for now).
 
 *The pack/crate sizes will be static, set to the sizes we usually get here when ordering.*  
 
