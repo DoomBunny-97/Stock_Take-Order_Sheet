@@ -12,10 +12,10 @@ document.getElementById('date-today').textContent = formattedDate;
 // -------------------------------------------
 
 const itemWarn = document.getElementById('item-warning');
-let crateAmount = 0;
+
 
 document.getElementById('add-item').addEventListener('click', function(){
-
+  
   // ---------------------------- refresh messages - save added items
   itemWarn.textContent = ''; // for warning message
   const addedItems = document.querySelectorAll('.usedItems');
@@ -26,7 +26,7 @@ document.getElementById('add-item').addEventListener('click', function(){
   const sText = dropdown.options[dropdown.selectedIndex].text;
   const container = document.getElementById('field-container');
 
-  const wrapper = document.createElement('div');//----------- wrapper
+  const wrapper = document.createElement('div');//----------- Wrapper
   wrapper.classList.add('container');
   wrapper.classList.add('wrapper');
   const iName = document.createElement('p');  //------------ add name
@@ -34,7 +34,7 @@ document.getElementById('add-item').addEventListener('click', function(){
   iName.classList.add('usedItems');
   iName.classList.add('fw6');
 
-  // console.log(sType);
+  // console.log(sType);// --------------------------------------TEST
 
   // -------------------- returns if selection is on the default item
   if (sType === "default-item"){
@@ -49,7 +49,8 @@ document.getElementById('add-item').addEventListener('click', function(){
     return;
   }
 
-  // console.log(itemCrateInfo[0]);
+  // console.log(itemCrateInfo[0]); // --------------------------TEST
+  let crateAmount = 0;
   if (
     itemCrateInfo[0] === 'ml300' || 
     itemCrateInfo[0] === 'ml440' || 
@@ -57,10 +58,11 @@ document.getElementById('add-item').addEventListener('click', function(){
     itemCrateInfo[0] === 'ml500HF' || 
     itemCrateInfo[0] === 'ml500PB'
   ) crateAmount = 24;
+  if (itemCrateInfo[0] === 'ml500G') crateAmount = 20;
   if (itemCrateInfo[0] === 'l2') crateAmount = 6;
   if (itemCrateInfo[0] === 'l2R') crateAmount = 9;
 
-  // console.log("Crate amount: " + crateAmount);
+  // console.log("Crate amount: " + crateAmount); // ------------TEST
 
   // ------------------------------------- creates the fields to add
   const newModel = document.createElement('input');
@@ -102,17 +104,21 @@ document.getElementById('add-item').addEventListener('click', function(){
   container.appendChild(wrapper);
 
   // ----------------------------------- for order field auto-fill
-  const inputF = wrapper.querySelectorAll('.first2');
-  inputF.forEach(input => input.addEventListener('input', function(){
+  function orderAutofill (){
     const modelVal = wrapper.querySelector(`.model_${sType}`).value || 0;
-    // console.log("Model: " + modelVal);
+    // console.log("Model: " + modelVal); // --------------------TEST
     const stockVal = (wrapper.querySelector(`.stock_${sType}`).value || 0) / crateAmount;
-    // console.log("Stock: " + stockVal);
+    // console.log("Stock: " + stockVal); // --------------------TEST
     const orderField = wrapper.querySelector(`.order_${sType}`);
     const calcVal = Math.round(modelVal - stockVal);
 
     if (calcVal < 1) orderField.value = 0;
     else orderField.value = Math.round(modelVal - stockVal);
-  }));
+  }
+
+  const inputF = wrapper.querySelectorAll('.first2');
+  const refreshBttn = document.querySelector('.list #refresh-order');
+  inputF.forEach(input => input.addEventListener('input', orderAutofill));
+  refreshBttn.addEventListener('click', orderAutofill);
 
 });
