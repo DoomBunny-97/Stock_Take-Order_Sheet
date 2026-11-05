@@ -1,4 +1,4 @@
-# Stock Take/Order Sheet [INOPERATIVE] / [WIP]
+# Stock Take/Order Sheet [WIP]
 
 ### *Project #2*
 
@@ -36,8 +36,9 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Pump Bottle            -> 24
 
 ### UPDATE:
-- Order field auto updates and is still editable after.
-- Fixed some issues in the code that would break it.
+- Fixed a small mistake with the crateAmounts variable.
+- Added a refresh button that resets the edited order fields to default.
+- Glass 500ml option no longer logs infinite crate size (*Added 'if' statement I forgor*).
 
 ### TO DO:
 - ~~Stop it from allowing duplicate fields.~~
@@ -46,9 +47,9 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Save option.
 - Load previous.
 - ~~Make Order field auto fill while also allowing edits to it.~~
-- Refresh edits button to reset manual changes made to Order field.
+- ~~Refresh edits button to reset manual changes made to Order field.~~
 - Button that makes a formatted document to print with the info contained.
-- Maybe add option to switch to other suppliers (this one is just Coke for now).
+- Maybe add option to switch to other suppliers (*this one is just Coke for now*).
 
 *The pack/crate sizes will be static, set to the sizes we usually get here when ordering.*  
 
