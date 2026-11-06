@@ -11,7 +11,9 @@ body{
 :root{
   --pri-col : rgb(155, 218, 255);
   --field-col: rgba(0, 174, 255, 0.315);
-  --pri-font-col: rgb(0, 66, 97);
+  --pri-font-col: rgb(107, 200, 243);
+  --butt-font-col: rgb(0, 53, 78);
+  --trans-bord: rgba(107, 106, 106, 0.15);
 }
 
 @supports (appearance: base-select){
@@ -21,9 +23,18 @@ body{
 
   ::picker(select){
     border: 0;
-    background: rgb(105, 207, 255);
+    background: rgb(0, 45, 66);
     border-radius: clamp(
     2px, 2vw, 8px);
+  }
+}
+
+@keyframes pulse-brightness {
+  0%, 100%{
+    filter: brightness(0.5);
+  }
+  50%{
+    filter:brightness(1.5);
   }
 }
 
@@ -49,7 +60,7 @@ input[type="number"]::placeholder {
   min-width: 600px;
   width:90%;
   border-radius: clamp(2px, 2vw, 6px);
-  background: var(--pri-col);
+  border:solid 1px var(--trans-bord);
   padding:5px;
 }
  
@@ -76,7 +87,7 @@ input[type="number"]::placeholder {
     height:20px;
   }
   button{
-    color:var(--pri-col);
+    color:var(--pri-font-col);
     background: transparent;
     border-radius: clamp(2px, 2vw, 6px);
     flex:1;
@@ -121,19 +132,24 @@ input[type="number"]::placeholder {
     height:100%;
     min-width: 100px;
     background:var(--pri-font-col);
-    color: var(--pri-col);
+    color: var(--butt-font-col);
+  }
+  button:active{
+    transform: scale(0.95);
   }
 }
 
 .wrapper{
   width:97%;
-  background: var(--pri-font-col);
+  border:solid 1px var(--trans-bord);
   border-radius: clamp(2px, 2vw, 6px);
 }
 
 .caution{
   color: rgb(197, 0, 0);
   font-weight: 600;
+
+  animation: pulse-brightness 3s ease-in-out infinite;
 }
 
 #field-container{
