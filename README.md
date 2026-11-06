@@ -36,20 +36,20 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Pump Bottle            -> 24
 
 ### UPDATE:
-- Fixed a small mistake with the crateAmounts variable.
-- Added a refresh button that resets the edited order fields to default.
-- Glass 500ml option no longer logs infinite crate size (*Added 'if' statement I forgor*).
+- Changed colours again <3
+- Buttons have some animations on click *
 
 ### TO DO:
-- ~~Stop it from allowing duplicate fields.~~
+
 - Better formatting ?
-- Button animations *
 - Save option.
 - Load previous.
-- ~~Make Order field auto fill while also allowing edits to it.~~
-- ~~Refresh edits button to reset manual changes made to Order field.~~
 - Button that makes a formatted document to print with the info contained.
 - Maybe add option to switch to other suppliers (*this one is just Coke for now*).
+- ~~Stop it from allowing duplicate fields.~~
+- ~~Button animations *~~
+- ~~Make Order field auto fill while also allowing edits to it.~~
+- ~~Refresh edits button to reset manual changes made to Order field.~~
 
 *The pack/crate sizes will be static, set to the sizes we usually get here when ordering.*  
 
