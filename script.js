@@ -9,22 +9,45 @@ const formattedDate = today.toLocaleDateString('en-GB', {
 
 document.getElementById('date-today').textContent = formattedDate;
 
-// -------------------------------------------
+// ------------------------------------------------------------------
+let addedItems = [];
+
+const container = document.getElementById('field-container');
+// window.addEventListener('DOMContentLoaded', () => {
+//   const savedHTML = localStorage.getItem('savedProgress');
+//   // const savedValues = JSON.parse(localStorage.getItem('savedProgressData'));
+//   if (savedHTML !== null) {
+//     container.innerHTML = savedHTML;
+//   }
+
+//   // if (savedValues !== null){
+//   //   const inputs = container.querySelectorAll('input');
+//   //   inputs.forEach((input, index) => {
+//   //     if (savedValues[index] !== undefined) {
+//   //       input.value = savedValues[index];
+//   //     }
+//   //   });
+//   // }
+
+//   // if (addedItems.length < 1){
+//   //   document.getElementById('save-print').style.display = "none";
+//   // }else if (addedItems.length >= 1){
+//   //   document.getElementById('save-print').removeAttribute('style');
+//   // }
+// })
 
 const itemWarn = document.getElementById('item-warning');
-
 
 document.getElementById('add-item').addEventListener('click', function(){
   
   // ---------------------------- refresh messages - save added items
   itemWarn.textContent = ''; // for warning message
-  const addedItems = document.querySelectorAll('.usedItems');
-  
+  addedItems = document.querySelectorAll('.usedItems');
+
   const dropdown = document.getElementById('iDropdown');
   const itemCrateInfo = dropdown.options[dropdown.selectedIndex].classList;
   const sType = dropdown.value;
   const sText = dropdown.options[dropdown.selectedIndex].text;
-  const container = document.getElementById('field-container');
 
   const wrapper = document.createElement('div');//----------- Wrapper
   wrapper.classList.add('container');
@@ -64,7 +87,7 @@ document.getElementById('add-item').addEventListener('click', function(){
 
   // console.log("Crate amount: " + crateAmount); // ------------TEST
 
-  // ------------------------------------- creates the fields to add
+  // -------------------------------------- creates the fields to add
   const newModel = document.createElement('input');
   const newStock = document.createElement('input');
   const newOrder = document.createElement('input');
@@ -86,7 +109,7 @@ document.getElementById('add-item').addEventListener('click', function(){
   newOrder.placeholder = 'Order';
   newOrder.classList.add(`order_${sType}`)
 
-  // ---------------------------- the X button for removing a field
+  // ------------------------------ the X button for removing a field
   const removeBtn = document.createElement('button');
   removeBtn.type = 'button';
   removeBtn.textContent = 'X';
@@ -95,7 +118,7 @@ document.getElementById('add-item').addEventListener('click', function(){
     container.removeChild(wrapper);
   });
 
-  // ------------------------- building the item row and adding it
+  // ---------------------------- building the item row and adding it
   wrapper.appendChild(iName);
   wrapper.appendChild(newModel);
   wrapper.appendChild(newStock);
@@ -103,7 +126,13 @@ document.getElementById('add-item').addEventListener('click', function(){
   wrapper.appendChild(removeBtn);
   container.appendChild(wrapper);
 
-  // ----------------------------------- for order field auto-fill
+  if (addedItems.length < 1){
+    document.getElementById('print').style.display = "none";
+  }else if (addedItems.length > 0){
+    document.getElementById('print').removeAttribute('style');
+  }
+
+  // -------------------------------------- for order field auto-fill
   function orderAutofill (){
     const modelVal = wrapper.querySelector(`.model_${sType}`).value || 0;
     // console.log("Model: " + modelVal); // --------------------TEST
@@ -114,11 +143,22 @@ document.getElementById('add-item').addEventListener('click', function(){
 
     if (calcVal < 1) orderField.value = 0;
     else orderField.value = Math.round(modelVal - stockVal);
+
+    // Save
+    // localStorage.setItem('savedProgress', container.innerHTML);
+    // const dataInputs = container.querySelectorAll('input');
+    // const dataValues = Array.from(dataInputs).map(input => input.value);
+    // localStorage.setItem('savedProgressData', JSON.stringify(dataValues));
   }
 
   const inputF = wrapper.querySelectorAll('.first2');
   const refreshBttn = document.querySelector('.list #refresh-order');
   inputF.forEach(input => input.addEventListener('input', orderAutofill));
   refreshBttn.addEventListener('click', orderAutofill);
+
+  // localStorage.setItem('savedProgress', container.innerHTML);
+  // const dataInputs = container.querySelectorAll('input');
+  // const dataValues = Array.from(dataInputs).map(input => input.value);
+  // localStorage.setItem('savedProgressData', JSON.stringify(dataValues));
 
 });
