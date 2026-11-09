@@ -7,6 +7,7 @@
   <title>Stock List</title>
 </head>
 <body>
+  
   <div id="app-container">
     <div class="container" id="title">
       <h1>Stock List</h1>
@@ -21,7 +22,7 @@
     <!-- item picker + button -->
     <div class="container list">
       <select name="item_picker" class="bordR-5px" id="iDropdown">
-        <!-- 300ml PET -->
+        <!-- 300ml PET------------------------- -->
         <option value="default-item">
           Pick an item</option>
         <option class="ml300" value="300-coke">
@@ -34,7 +35,7 @@
           300ml Fanta</option>
         <option class="ml300" value="300-sprite">
           300ml Sprite</option>
-        <!-- 440ml PET -->
+        <!-- 440ml PET------------------------- -->
         <option class="ml440" value="440-coke">
           440ml Coke</option>
         <option class="ml440" value="440-lite">
@@ -45,7 +46,7 @@
           440ml Pine Nut</option>
         <option class="ml440" value="440-stoney">
           440ml Stoney</option>
-        <!-- 500ml Glass -->
+        <!-- 500ml Glass----------------------- -->
         <option class="ml500G" value="500G-coke">
           500ml G Coke</option>
         <option class="ml500G" value="500G-fo">
@@ -54,7 +55,7 @@
           500ml G Fanta Grape</option>
         <option class="ml500G" value="500G-fpn">
           500ml G Fanta Pine Nut</option>
-        <!-- 2l PET -->
+        <!-- 2l PET---------------------------- -->
         <option class="l2" value="2-coke">
           2L Coke</option>
         <option class="l2" value="2-lite">
@@ -67,23 +68,23 @@
           2L SL Cream Soda</option>
         <option class="l2" value="2-rb">
           2L SL Raspberry</option>
-        <!-- 2l rPET -->
+        <!-- 2l rPET-------------------------- -->
         <option class="l2R" value="2R-Coke">
           2L Coke (Retrunable)</option>
-        <!-- 500ml Can -->
+        <!-- 500ml Can------------------------ -->
         <option class="ml500C" value="500C-monster">
           500ml Monster Original</option>
-        <!-- 500ml Hot-Fill PET -->
+        <!-- 500ml Hot-Fill PET--------------- -->
         <option class="ml500HF" value="500HF-naartjie">
           500ml Powerade Naartjie</option>
         <option class="ml500HF" value="500HF-mountainblast">
           500ml Powerade Mountainblast</option>
-        <!-- Pump Bottle -->
-        <!-- ...and more -->
+        <!-- Pump Bottle---------------------- -->
+        <!-- ...and more---------------------- -->
       </select>
 
-      <button class="bordR-5px" id="add-item">Add</button>
-      <button class="bordR-5px" id="refresh-order"><i class="fa-solid fa-arrow-rotate-left"></i> Order</button>
+      <button class="butt1" id="add-item">Add</button>
+      <button class="butt1" id="refresh-order"><i class="fa-solid fa-arrow-rotate-left"></i> Order</button>
     </div>
 
     <div id="field-container">
@@ -94,18 +95,22 @@
       <!-- <div class="container wrapper">
         <p class="usedItems fw6">[Item Picked]</p> 
 
-        <input type="number" name="model_stock" placeholder="Model" id="model-itemDef">
-        <input type="number" name="stock_levelDef" placeholder="Stock" id="stock-item">
-        <input type="number" name="order" placeholder="Order" id="order1"> 
+        <input type="number" name="model_default-item" placeholder="Model" id="model-itemDef">
+        <input type="number" name="stock_default-item" placeholder="Stock" id="stock-item">
+        <input type="number" name="order_default-item" placeholder="Order"> 
 
         <button>X</button>
         
       </div>  -->
 
-      <!-- ======================================= -->
+      <!-- ======================================== -->
     </div>
+    <div id="print" class="container" style="display: none;">
+      <button class="butt2">Print</button>  
+    </div>
+    
   </div>
-
+  
   <script src="script.js" defer></script>
   <script src="https://kit.fontawesome.com/77191b28ad.js" crossorigin="anonymous"></script>
 </body>
