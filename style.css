@@ -12,7 +12,7 @@ body{
   --pri-col : rgb(155, 218, 255);
   --field-col: rgba(0, 174, 255, 0.315);
   --pri-font-col: rgb(107, 200, 243);
-  --butt-font-col: rgb(0, 53, 78);
+  --butt-font-col1: rgb(0, 53, 78);
   --trans-bord: rgba(107, 106, 106, 0.15);
 }
 
@@ -57,11 +57,11 @@ input[type="number"]::placeholder {
 #app-container{
   position: relative;
   top:40px;
+  width:600px;
   min-width: 600px;
-  width:90%;
   border-radius: clamp(2px, 2vw, 6px);
   border:solid 1px var(--trans-bord);
-  padding:5px;
+  padding:20px;
 }
  
 .container{
@@ -90,9 +90,8 @@ input[type="number"]::placeholder {
     color:var(--pri-font-col);
     background: transparent;
     border-radius: clamp(2px, 2vw, 6px);
-    flex:1;
     height:100%;
-    width:20px;
+    width:50px;
     border: 0;
     padding: 2px;
     font-weight: 600;
@@ -102,6 +101,7 @@ input[type="number"]::placeholder {
   }
 }
 
+/* STYLE TEMPLATE CLASS */
 .bordR-5px{
   border-radius: clamp(
     5px, 2vw, 6px);
@@ -115,6 +115,21 @@ input[type="number"]::placeholder {
 .fw6{
   font-weight: 600;
 }
+button.butt1{
+  border-radius: clamp(
+    5px, 2vw, 6px);
+  border: 0;
+  background: var(--pri-col);
+  color: var(--butt-font-col1);
+}
+button.butt2{
+  border-radius: clamp(
+    5px, 2vw, 6px);
+  border: 0;
+  background: var(--butt-font-col1);
+  color: var(--pri-col);
+}
+/* ------------------- */
 
 .instruction{
   text-align: center;
@@ -131,8 +146,6 @@ input[type="number"]::placeholder {
   button{
     height:100%;
     min-width: 100px;
-    background:var(--pri-font-col);
-    color: var(--butt-font-col);
   }
   button:active{
     transform: scale(0.95);
@@ -143,6 +156,9 @@ input[type="number"]::placeholder {
   width:97%;
   border:solid 1px var(--trans-bord);
   border-radius: clamp(2px, 2vw, 6px);
+  button{
+    width:20px;
+  }
 }
 
 .caution{
@@ -157,6 +173,11 @@ input[type="number"]::placeholder {
   flex-direction: column;
   align-items: center;
   gap:2px;
+}
+
+#print button{
+  height:30px;
+  width:70px; 
 }
 
 #date-today{
