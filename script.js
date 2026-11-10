@@ -11,33 +11,81 @@ document.getElementById('date-today').textContent = formattedDate;
 
 // ------------------------------------------------------------------
 let addedItems = [];
-
 const container = document.getElementById('field-container');
-// window.addEventListener('DOMContentLoaded', () => {
-//   const savedHTML = localStorage.getItem('savedProgress');
-//   // const savedValues = JSON.parse(localStorage.getItem('savedProgressData'));
-//   if (savedHTML !== null) {
-//     container.innerHTML = savedHTML;
-//   }
 
-//   // if (savedValues !== null){
-//   //   const inputs = container.querySelectorAll('input');
-//   //   inputs.forEach((input, index) => {
-//   //     if (savedValues[index] !== undefined) {
-//   //       input.value = savedValues[index];
-//   //     }
-//   //   });
-//   // }
+// WIP ------------------------------------------------------- START
+function autoFill (wrap){
+  // console.log(wrap); // ----------------------------------- TEST
+  const crateItemA = wrap.querySelector('.crateItemA').innerHTML;
+  // console.log("Crate: " + crateItemA); // ------------------TEST
+  const modelVal = wrap.querySelector(`.model`).value || 0;
+  // console.log("Model: " + modelVal); // --------------------TEST
+  const stockVal = (wrap.querySelector(`.stock`).value || 0) / crateItemA;
+  // console.log("Stock: " + stockVal); // --------------------TEST
+  const orderField = wrap.querySelector(`.order`);
+  const calcVal = Math.round(modelVal - stockVal);
+    
+  if (calcVal < 1) orderField.value = 0;
+  else orderField.value = Math.round(modelVal - stockVal);
 
-//   // if (addedItems.length < 1){
-//   //   document.getElementById('save-print').style.display = "none";
-//   // }else if (addedItems.length >= 1){
-//   //   document.getElementById('save-print').removeAttribute('style');
-//   // }
-// })
+  // Save
+  localStorage.setItem('savedProgress', container.innerHTML);
+  const dataInputs = container.querySelectorAll('input');
+  const dataValues = Array.from(dataInputs).map(input => input.value);
+  localStorage.setItem('savedProgressData', JSON.stringify(dataValues));
+}
+
+function loadSavedNodes(){
+  const savedHTML = localStorage.getItem('savedProgress');
+  const savedValues = JSON.parse(localStorage.getItem('savedProgressData'));
+  if (savedHTML !== null) {
+    container.innerHTML = savedHTML;
+  }
+
+  if (savedValues !== null){
+    const inputs = container.querySelectorAll('input');
+    inputs.forEach((input, index) => {
+      if (savedValues[index] !== undefined) {
+        input.value = savedValues[index];
+      }
+    });
+  }
+
+  // if (addedItems.length < 1){
+  //   document.getElementById('save-print').style.display = "none";
+  // }else if (addedItems.length >= 1){
+  //   document.getElementById('save-print').removeAttribute('style');
+  // }
+
+}loadSavedNodes();
+
+async function init(){
+  await loadSavedNodes();
+
+  const containerA = document.getElementById('field-container');
+  const itemWrappers = containerA.querySelectorAll('.wrapper');
+  // console.log(containerA); // ------------------------------ TEST
+  // console.log(itemWrappers); // ---------------------------- TEST
+  if(itemWrappers.length >= 1){ itemWrappers.forEach((wrapper) => {
+    const model = wrapper.querySelectorAll('.first2');
+    const removeBtn = wrapper.querySelector('.remove');
+    // console.log(model); // --------------------------------- TEST
+    model.forEach((node) => node.addEventListener('input', () => autoFill(wrapper)));
+    removeBtn.addEventListener('click', function(){
+      container.removeChild(wrapper);
+
+      localStorage.setItem('savedProgress', container.innerHTML);
+      const dataInputs = container.querySelectorAll('input');
+      const dataValues = Array.from(dataInputs).map(input => input.value);
+      localStorage.setItem('savedProgressData', JSON.stringify(dataValues));
+    });
+  })}
+  // else {console.log('ERROR')} // --------------------------- TEST
+}init();
+// WIP -------------------------------------------------------- END
+
 
 const itemWarn = document.getElementById('item-warning');
-
 document.getElementById('add-item').addEventListener('click', function(){
   
   // ---------------------------- refresh messages - save added items
@@ -91,23 +139,27 @@ document.getElementById('add-item').addEventListener('click', function(){
   const newModel = document.createElement('input');
   const newStock = document.createElement('input');
   const newOrder = document.createElement('input');
+  const crateAm = document.createElement('p');
 
   newModel.type = 'number';
   newModel.name = `model_${sType}`;
   newModel.placeholder = 'Model';
   newModel.classList.add('first2');
-  newModel.classList.add(`model_${sType}`)
+  newModel.classList.add(`model`)
 
   newStock.type = 'number';
   newStock.name = `stock_${sType}`;
   newStock.placeholder = 'Stock';
   newStock.classList.add('first2');
-  newStock.classList.add(`stock_${sType}`)
+  newStock.classList.add(`stock`)
 
   newOrder.type = 'number';
   newOrder.name = `order_${sType}`;
   newOrder.placeholder = 'Order';
-  newOrder.classList.add(`order_${sType}`)
+  newOrder.classList.add(`order`)
+
+  crateAm.textContent = crateAmount;
+  crateAm.classList.add('crateItemA');
 
   // ------------------------------ the X button for removing a field
   const removeBtn = document.createElement('button');
@@ -119,6 +171,7 @@ document.getElementById('add-item').addEventListener('click', function(){
   });
 
   // ---------------------------- building the item row and adding it
+  wrapper.appendChild(crateAm);
   wrapper.appendChild(iName);
   wrapper.appendChild(newModel);
   wrapper.appendChild(newStock);
@@ -133,32 +186,24 @@ document.getElementById('add-item').addEventListener('click', function(){
   }
 
   // -------------------------------------- for order field auto-fill
-  function orderAutofill (){
-    const modelVal = wrapper.querySelector(`.model_${sType}`).value || 0;
-    // console.log("Model: " + modelVal); // --------------------TEST
-    const stockVal = (wrapper.querySelector(`.stock_${sType}`).value || 0) / crateAmount;
-    // console.log("Stock: " + stockVal); // --------------------TEST
-    const orderField = wrapper.querySelector(`.order_${sType}`);
-    const calcVal = Math.round(modelVal - stockVal);
+  
+  const inputF = wrapper.querySelectorAll('.first2');
+  const refreshBttn = document.querySelector('.list #refresh-order');
+  inputF.forEach(input => input.addEventListener('input', () => autoFill(wrapper)));
+  refreshBttn.addEventListener('click', () => autoFill(wrapper));
 
-    if (calcVal < 1) orderField.value = 0;
-    else orderField.value = Math.round(modelVal - stockVal);
+  // SAVE
+  localStorage.setItem('savedProgress', container.innerHTML);
+  const dataInputs = container.querySelectorAll('input');
+  const dataValues = Array.from(dataInputs).map(input => input.value);
+  localStorage.setItem('savedProgressData', JSON.stringify(dataValues));
 
-    // Save
+});
+
+//  WIP -----------------------------------------------------
+
+// Save
     // localStorage.setItem('savedProgress', container.innerHTML);
     // const dataInputs = container.querySelectorAll('input');
     // const dataValues = Array.from(dataInputs).map(input => input.value);
     // localStorage.setItem('savedProgressData', JSON.stringify(dataValues));
-  }
-
-  const inputF = wrapper.querySelectorAll('.first2');
-  const refreshBttn = document.querySelector('.list #refresh-order');
-  inputF.forEach(input => input.addEventListener('input', orderAutofill));
-  refreshBttn.addEventListener('click', orderAutofill);
-
-  // localStorage.setItem('savedProgress', container.innerHTML);
-  // const dataInputs = container.querySelectorAll('input');
-  // const dataValues = Array.from(dataInputs).map(input => input.value);
-  // localStorage.setItem('savedProgressData', JSON.stringify(dataValues));
-
-});
