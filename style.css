@@ -168,6 +168,10 @@ button.butt2{
   animation: pulse-brightness 3s ease-in-out infinite;
 }
 
+.crateItemA{
+  display: none;
+}
+
 #field-container{
   display: flex;
   flex-direction: column;
