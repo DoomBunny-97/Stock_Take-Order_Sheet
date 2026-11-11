@@ -3,17 +3,22 @@
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-body{
-  display:flex;
-  justify-content: center;
-  background-color: rgb(0, 35, 51);
-}
+
 :root{
+  --main-bg-col : rgb(0, 20, 29);
+  --container-col: rgb(0, 35, 51);
   --pri-col : rgb(155, 218, 255);
   --field-col: rgba(0, 174, 255, 0.315);
   --pri-font-col: rgb(107, 200, 243);
   --butt-font-col1: rgb(0, 53, 78);
   --trans-bord: rgba(107, 106, 106, 0.15);
+  --trans-bord2: rgba(255, 255, 255, 0.105);
+}
+
+body{
+  display:flex;
+  justify-content: center;
+  background-color: var(--main-bg-col);
 }
 
 @supports (appearance: base-select){
@@ -23,7 +28,7 @@ body{
 
   ::picker(select){
     border: 0;
-    background: rgb(0, 45, 66);
+    background: var(--container-col);
     border-radius: clamp(
     2px, 2vw, 8px);
   }
@@ -59,6 +64,7 @@ input[type="number"]::placeholder {
   top:40px;
   width:600px;
   min-width: 600px;
+  background:var(--container-col);
   border-radius: clamp(2px, 2vw, 6px);
   border:solid 1px var(--trans-bord);
   padding:20px;
@@ -154,8 +160,9 @@ button.butt2{
 
 .wrapper{
   width:97%;
-  border:solid 1px var(--trans-bord);
+  border:solid 1px var(--trans-bord2);
   border-radius: clamp(2px, 2vw, 6px);
+  background: var(--main-bg-col);
   button{
     width:20px;
   }
@@ -187,7 +194,7 @@ button.butt2{
 #date-today{
   color: var(--pri-font-col);
   flex:0;
-  min-width: 220px;
+  min-width: 230px;
 }
 
 #iDropdown{
