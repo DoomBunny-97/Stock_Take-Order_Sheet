@@ -36,10 +36,10 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Pump Bottle            -> 24
 
 ### UPDATE:
-- Save/Load works now but breaks order refresh on loaded items. (*event listener does not work for the reloaded fields*)
-- Order field still auto fills when changed after loading the fields. (*can reftesh where button doesnt work aswell*)
-- Fixed remove buttons for loaded fields. 
-- Added many test logs for code.
+- Fixed order refresh button to work on items loaded on page refresh.
+- Fixed where it didnt save when manually editing order field.
+- Made some functions to remove the need to repeat some sections.
+- Changed some colours.
 
 ### TO DO:
 
@@ -47,13 +47,13 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Button that makes a formatted document to print with the info contained.
 - Maybe add option to switch to other suppliers (*this one is just Coke for now*).
 - Make light and dark modes *
-- Fix order refresh button to refresh fields added on page reload.
 - ~~Stop it from allowing duplicate fields.~~
 - ~~Button animations *~~
 - ~~Make Order field auto fill while also allowing edits to it.~~
 - ~~Refresh edits button to reset manual changes made to Order field.~~
 - ~~Load previous.~~
 - ~~Save option.~~
+- ~~Fix order refresh button to refresh fields added on page reload.~~
 
 *The pack/crate sizes will be static, set to the sizes we usually get here when ordering.*  
 
