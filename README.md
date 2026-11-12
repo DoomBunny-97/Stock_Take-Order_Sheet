@@ -37,6 +37,7 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 
 ### UPDATE:
 - Enter now adds the item selected like the Add button.
+- Print button appears but does not work yet.
 
 ### TO DO:
 
