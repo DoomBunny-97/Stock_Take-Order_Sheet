@@ -12,8 +12,17 @@ document.getElementById('date-today').textContent = formattedDate;
 // ------------------------------------------------------------------
 let addedItems = [];
 const container = document.getElementById('field-container');
+const itemWarn = document.getElementById('item-warning');
+const genDocButt = document.getElementById('print');
 
 // WIP ------------------------------------------------------- START
+function generateDocButt(cont){
+  const wrapperAmount = cont.querySelectorAll('.wrapper').length;
+  console.log(genDocButt);
+  console.log(wrapperAmount);
+  if (wrapperAmount === 0) genDocButt.classList.add('dispNone');
+  else genDocButt.classList.remove('dispNone');
+}generateDocButt(container);
 
 function saveProgress (){
   localStorage.setItem('savedProgress', container.innerHTML);
@@ -38,6 +47,7 @@ function autoFill (wrap){
 
   // Save
   saveProgress();
+  generateDocButt(container);
 }
 
 function loadSavedNodes(){
@@ -55,13 +65,7 @@ function loadSavedNodes(){
       }
     });
   }
-
-  // if (addedItems.length < 1){
-  //   document.getElementById('save-print').style.display = "none";
-  // }else if (addedItems.length >= 1){
-  //   document.getElementById('save-print').removeAttribute('style');
-  // }
-
+  generateDocButt(container);
 }loadSavedNodes();
 
 async function init(){
@@ -94,13 +98,11 @@ async function init(){
 }init();
 // WIP -------------------------------------------------------- END
 
-
-const itemWarn = document.getElementById('item-warning');
-document.getElementById('add-item').addEventListener('click', function(){
-  
+function addItem(){
   // ---------------------------- refresh messages - save added items
   itemWarn.textContent = ''; // for warning message
   addedItems = document.querySelectorAll('.usedItems');
+  generateDocButt(container);
 
   const dropdown = document.getElementById('iDropdown');
   const itemCrateInfo = dropdown.options[dropdown.selectedIndex].classList;
@@ -151,10 +153,10 @@ document.getElementById('add-item').addEventListener('click', function(){
   const newOrder = document.createElement('input');
   const crateAm = document.createElement('p');
 
-  function numFields(field, fieldType, type, wrap, firstTwo){
+  function numFields(field, fieldType, stype, wrap, firstTwo){
     const capfield = fieldType.charAt(0).toUpperCase() + fieldType.slice(1);
     field.type = 'number';
-    field.name = `${fieldType}_${type}`;
+    field.name = `${fieldType}_${stype}`;
     field.placeholder = capfield;
     field.classList.add(fieldType);
     if (firstTwo) field.classList.add('first2');
@@ -162,7 +164,8 @@ document.getElementById('add-item').addEventListener('click', function(){
   };
 
   crateAm.textContent = crateAmount;
-  crateAm.classList.add('crateItemA');
+  crateAm.classList.add('crateItemA')
+  crateAm.classList.add('dispNone');
 
   // ------------------------------ the X button for removing a field
   const removeBtn = document.createElement('button');
@@ -171,6 +174,7 @@ document.getElementById('add-item').addEventListener('click', function(){
   removeBtn.classList.add('remove');
   removeBtn.addEventListener('click', function(){
     container.removeChild(wrapper);
+    generateDocButt(container);
   });
 
   // ---------------------------- building the item row and adding it
@@ -181,12 +185,6 @@ document.getElementById('add-item').addEventListener('click', function(){
   numFields(newOrder, 'order', sType, wrapper, false);
   wrapper.appendChild(removeBtn);
   container.appendChild(wrapper);
-
-  // if (addedItems.length < 1){
-  //   document.getElementById('print').style.display = "none";
-  // }else if (addedItems.length > 0){
-  //   document.getElementById('print').removeAttribute('style');
-  // }
 
   // -------------------------------------- for order field auto-fill
   
@@ -199,4 +197,12 @@ document.getElementById('add-item').addEventListener('click', function(){
 
   // ----------------------------------------------------------- SAVE
   saveProgress();
+};
+
+document.getElementById('add-item').addEventListener('click', () => addItem());
+document.addEventListener('keydown', function(event){
+  if (event.key === 'Enter'){
+    event.preventDefault();
+    addItem();
+  }
 });
