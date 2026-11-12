@@ -58,7 +58,9 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 If you have any ideas to add feel free to tell me!  
 I am using these projets to learn, so if my code is making your brain hurt mb *</3*.
 
-PS: I will still be working on previous projects, just need to refresh my head with something else for a change.  
+Ps: I work on this when I have time and I have a job on the side. That being said, I am interested in working as a Web Developer so my current job won't be in the way of me pursuing it if anyone is interested in taking me in as an intern <3. I am not in a University, all of this is from self study for personal growth and interest. 
+
+For anyone interested in hiring, you can email me at mvanzyl341@gmail.com.
   
 **'?'** = *not sure*  
 **'*'** = *user appeal*
