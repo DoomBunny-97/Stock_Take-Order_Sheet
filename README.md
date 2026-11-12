@@ -36,10 +36,7 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Pump Bottle            -> 24
 
 ### UPDATE:
-- Fixed order refresh button to work on items loaded on page refresh.
-- Fixed where it didnt save when manually editing order field.
-- Made some functions to remove the need to repeat some sections.
-- Changed some colours.
+- Enter now adds the item selected like the Add button.
 
 ### TO DO:
 
