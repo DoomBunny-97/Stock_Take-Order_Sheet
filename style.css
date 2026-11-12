@@ -175,7 +175,7 @@ button.butt2{
   animation: pulse-brightness 3s ease-in-out infinite;
 }
 
-.crateItemA{
+.dispNone{
   display: none;
 }
 
