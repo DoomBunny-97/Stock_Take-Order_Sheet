@@ -1,4 +1,4 @@
-# Stock Take/Order Sheet [INOPERATIVE] / [WIP]
+# Stock Take/Order Sheet [WIP]
 
 ### *Project #2*
 
