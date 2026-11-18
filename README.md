@@ -36,8 +36,8 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Pump Bottle            -> 24
 
 ### UPDATE:
-- Enter now adds the item selected like the Add button.
-- Print button appears but does not work yet.
+- Working on the document generation so nothing to post yet.
+- Learning the basics of template document creation and auto fill for the printing function*
 
 ### TO DO:
 
