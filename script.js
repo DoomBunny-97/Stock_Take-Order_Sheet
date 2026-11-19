@@ -13,15 +13,16 @@ document.getElementById('date-today').textContent = formattedDate;
 let addedItems = [];
 const container = document.getElementById('field-container');
 const itemWarn = document.getElementById('item-warning');
-const genDocButt = document.getElementById('print');
+const printField = document.getElementById('print');
+const docGenButt = document.getElementById('p-butt');
 
 // WIP ------------------------------------------------------- START
 function generateDocButt(cont){
   const wrapperAmount = cont.querySelectorAll('.wrapper').length;
-  console.log(genDocButt);
-  console.log(wrapperAmount);
-  if (wrapperAmount === 0) genDocButt.classList.add('dispNone');
-  else genDocButt.classList.remove('dispNone');
+  // console.log(printField);
+  // console.log(wrapperAmount);
+  if (wrapperAmount === 0) printField.classList.add('dispNone');
+  else printField.classList.remove('dispNone');
 }generateDocButt(container);
 
 function saveProgress (){
@@ -86,6 +87,7 @@ async function init(){
     model.forEach((node) => node.addEventListener('input', () => autoFill(wrapper)));
     removeBtn.addEventListener('click', function(){
       container.removeChild(wrapper);
+      generateDocButt(container);
 
       localStorage.setItem('savedProgress', container.innerHTML);
       const dataInputs = container.querySelectorAll('input');
@@ -156,7 +158,7 @@ function addItem(){
   function numFields(field, fieldType, stype, wrap, firstTwo){
     const capfield = fieldType.charAt(0).toUpperCase() + fieldType.slice(1);
     field.type = 'number';
-    field.name = `${fieldType}_${stype}`;
+    field.name = `${fieldType}`;
     field.placeholder = capfield;
     field.classList.add(fieldType);
     if (firstTwo) field.classList.add('first2');
@@ -178,8 +180,9 @@ function addItem(){
   });
 
   // ---------------------------- building the item row and adding it
-  wrapper.appendChild(crateAm);
+  
   wrapper.appendChild(iName);
+  wrapper.appendChild(crateAm);
   numFields(newModel, 'model', sType, wrapper, true);
   numFields(newStock, 'stock', sType, wrapper, true);
   numFields(newOrder, 'order', sType, wrapper, false);
@@ -206,3 +209,49 @@ document.addEventListener('keydown', function(event){
     addItem();
   }
 });
+
+async function docxGenerate(){
+  try{
+    const response = await fetch('template.docx');
+
+    if (!response.ok){
+      throw new Error(`Template request failed: ${response.status}`);
+    }
+
+    const arrayBuffer = await response.arrayBuffer();
+    const zip = new PizZip(arrayBuffer);
+    const doc = new window.docxtemplater(zip, {
+      paragraphLoop: true,
+      linebreaks:true,
+    });
+    
+    const entries = [...document.querySelectorAll('.wrapper')].map((wrapper) => ({
+      name: wrapper.querySelector('p').textContent.trim(),
+      model: wrapper.querySelector('.model').value,
+      stock: wrapper.querySelector('.stock').value,
+      order: wrapper.querySelector('.order').value,
+    }));
+
+    const today = new Date();
+    const formattedDate = [
+      String(today.getDate()).padStart(2, "0"),
+      String(today.getMonth() + 1).padStart(2, "0"),
+      today.getFullYear(),
+    ].join("-");
+
+    doc.render({ entries, date: formattedDate });
+    
+    const blob = doc.getZip().generate({
+      type:'blob',
+      mimeType:  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    });
+
+    saveAs(blob, `${formattedDate}_Coke-Order.docx`);
+  } catch (error){
+    console.error(error);
+    alert('Could not create the document. Check that the template is in the right folder.');
+    console.log(entries);
+  }
+}
+
+docGenButt.addEventListener('click', () => docxGenerate());
