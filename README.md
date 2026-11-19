@@ -36,13 +36,15 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - Pump Bottle            -> 24
 
 ### UPDATE:
-- Working on the document generation so nothing to post yet.
-- Learning the basics of template document creation and auto fill for the printing function*
+- Print button appears when enough entries are made.
+- Print generates a .docx file that gets downloaded and named with today's date and the name of the company (static one company for now).
+- Print still is able to print even if the fields are unfilled so need to fix that.
 
 ### TO DO:
 
+- Make print fail when theres an unfilled field. 
+- Better formatting for the template doc.
 - Better formatting ?
-- Button that makes a formatted document to print with the info contained.
 - Maybe add option to switch to other suppliers (*this one is just Coke for now*).
 - Make light and dark modes *
 - ~~Stop it from allowing duplicate fields.~~
@@ -52,15 +54,16 @@ Writing the numbers in pen is *fine*, but having a digital page to keep track of
 - ~~Load previous.~~
 - ~~Save option.~~
 - ~~Fix order refresh button to refresh fields added on page reload.~~
+- ~~Button that makes a formatted document to print with the info contained.~~
 
 *The pack/crate sizes will be static, set to the sizes we usually get here when ordering.*  
 
 If you have any ideas to add feel free to tell me!  
 I am using these projets to learn, so if my code is making your brain hurt mb *</3*.
 
-Ps: I work on this when I have time and I have a job on the side. That being said, I am interested in working as a Web Developer so my current job won't be in the way of me pursuing it if anyone is interested in taking me in as an intern <3. I am not in a University, all of this is from self study for personal growth and interest. 
-
-For anyone interested in hiring, you can email me at mvanzyl341@gmail.com.
+Ps: I work on this when I have time and I have a job on the side. That being said, I am interested in working as a Web Developer so my current job won't be in the way of me pursuing it if anyone is interested in taking me in as an intern <3. I am not in a University, all of this is from self study for personal growth and interest.  
+  
+For anyone interested in hiring, you can email me at mvanzyl341@gmail.com.  
   
 **'?'** = *not sure*  
 **'*'** = *user appeal*
