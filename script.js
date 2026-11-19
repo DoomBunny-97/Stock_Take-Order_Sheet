@@ -242,8 +242,8 @@ async function docxGenerate(){
     doc.render({ entries, date: formattedDate });
     
     const blob = doc.getZip().generate({
-      type:'blob',
-      mimeType:  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+      type: 'blob',
+      mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     });
 
     saveAs(blob, `${formattedDate}_Coke-Order.docx`);
